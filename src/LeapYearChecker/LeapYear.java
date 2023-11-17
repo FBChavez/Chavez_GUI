@@ -14,12 +14,19 @@ public class LeapYear extends JFrame{
         btnCheckYear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int year = Integer.parseInt(tfYear.getText());
-                if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
-                    JOptionPane.showMessageDialog(null, "Leap Year");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Not a leap year");
+                try {
+                    int year = Integer.parseInt(tfYear.getText());
+                    if(year <= 0) {
+                        JOptionPane.showMessageDialog(null, "Invalid year");
+                    }else if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                        JOptionPane.showMessageDialog(null, "Leap Year");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Not a leap year");
+                    }
+                } catch (NumberFormatException n) {
+                    JOptionPane.showMessageDialog(null, "May contain invalid or empty input/s.");
                 }
+
             }
         });
     }
